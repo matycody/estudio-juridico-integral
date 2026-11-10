@@ -1,0 +1,142 @@
+/* Componentes: botón de WhatsApp, teléfono, filas de áreas, pasos y balanza */
+
+/* Botón de WhatsApp */
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 22px;
+  background: var(--wa);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 4px;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.btn-wa:hover {
+  background: var(--wa-hover);
+  transform: translateY(-2px);
+}
+
+.btn-wa svg {
+  flex: none;
+}
+
+.btn-wa--lg {
+  gap: 12px;
+  min-height: 58px;
+  padding: 0 32px;
+  font-size: 18px;
+}
+
+.btn-wa--xl {
+  gap: 12px;
+  min-height: 64px;
+  padding: 0 36px;
+  font-size: 19px;
+}
+
+/* Teléfono visible */
+.phone {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.phone--lg {
+  font-size: 24px;
+}
+
+/* Filas de áreas */
+.area-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 56px;
+  border-bottom: 1px solid var(--line-light);
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 500;
+  transition: background 0.18s ease, padding 0.18s ease;
+}
+
+.area-link:hover {
+  background: var(--hover-light);
+  padding-inline: 12px;
+}
+
+.area-link svg {
+  flex: none;
+  transition: transform 0.18s ease;
+}
+
+.area-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* Pasos */
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(209, 169, 78, 0.5);
+}
+
+.step__num {
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--brass);
+}
+
+.step__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--paper);
+}
+
+.step__text {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--soft-dark);
+  text-wrap: pretty;
+}
+
+/* Balanza */
+.balance {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+}
+
+.balance__beam {
+  transform-origin: 200px 108px;
+  animation: sway 9s ease-in-out infinite alternate;
+}
+
+@keyframes sway {
+  from {
+    transform: rotate(-1.8deg);
+  }
+  to {
+    transform: rotate(1.8deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .balance__beam {
+    animation: none;
+  }
+
+  .btn-wa,
+  .area-link,
+  .area-link svg {
+    transition: none;
+  }
+}

@@ -1,0 +1,95 @@
+/* Variables, reset y tipografía base */
+
+:root {
+  /* Colores */
+  --ink: #0b1633;
+  --navy: #12245a;
+  --paper: #f2f4f9;
+  --brass: #d1a94e;
+  --wa: #25d366;
+  --wa-hover: #3be07d;
+
+  --muted-dark: #c5cce0;
+  --soft-dark: #d5dbec;
+  --footer-text: #aeb7d1;
+  --muted-light: #4a557a;
+  --line-light: #c9d0e2;
+  --hover-light: #e3e8f4;
+
+  /* Tipografías */
+  --font-display: "Bodoni Moda", Georgia, serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+
+  /* Espaciado */
+  --gutter: clamp(20px, 5vw, 72px);
+  --maxw: 1280px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.display em {
+  font-weight: 400;
+  color: var(--brass);
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.lead {
+  max-width: 46ch;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--muted-dark);
+  text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
