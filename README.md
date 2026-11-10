@@ -43,3 +43,5 @@ Netlify o Vercel: importar este repositorio. No hay comando de build; el directo
 ## Pendiente de contenido
 
 - **Quiénes somos:** el texto es de demostración. Reemplazar por el real (trayectoria, matrícula, foto) cuando esté.
+
+- **Quitar `noindex`:** `index.html` tiene `<meta name="robots" content="noindex, nofollow">` mientras sea demo. Borrar esa línea al publicar la versión final.
