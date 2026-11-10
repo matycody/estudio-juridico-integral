@@ -39,13 +39,13 @@
   }
 
   .balance__beam {
-    animation: sway 12s ease-in-out 3.2s infinite;
+    animation: sway 8s ease-in-out 3.2s infinite;
   }
 
   @keyframes sway {
     0%   { transform: rotate(0deg); }
-    25%  { transform: rotate(1.8deg); }
-    75%  { transform: rotate(-1.8deg); }
+    25%  { transform: rotate(3.5deg); }
+    75%  { transform: rotate(-3.5deg); }
     100% { transform: rotate(0deg); }
   }
 

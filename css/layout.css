@@ -158,9 +158,13 @@ section[id] {
 .about__body {
   flex: 2 1 420px;
   max-width: 62ch;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   font-size: 19px;
   line-height: 1.7;
   color: var(--muted-dark);
+  text-wrap: pretty;
 }
 
 /* Áreas (fondo claro, paneles oscuros) */

@@ -42,4 +42,4 @@ Netlify o Vercel: importar este repositorio. No hay comando de build; el directo
 
 ## Pendiente de contenido
 
-- **Quiénes somos:** la sección tiene un texto provisional entre corchetes en `index.html`. Completar con presentación, años de trayectoria, matrícula y foto.
+- **Quiénes somos:** el texto es de demostración. Reemplazar por el real (trayectoria, matrícula, foto) cuando esté.
