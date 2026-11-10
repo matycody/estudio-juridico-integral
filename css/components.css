@@ -38,6 +38,37 @@
   font-size: 19px;
 }
 
+/* Barra fija de WhatsApp: solo en pantallas chicas */
+.wa-bar {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .wa-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 56px;
+    padding: 0 20px env(safe-area-inset-bottom, 0px);
+    background: var(--wa);
+    color: var(--ink);
+    font-size: 17px;
+    font-weight: 700;
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.28);
+  }
+
+  /* Deja lugar para que la barra no tape el pie */
+  .site-footer {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 /* Teléfono visible */
 .phone {
   font-size: 20px;
