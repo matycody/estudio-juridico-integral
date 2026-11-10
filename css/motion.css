@@ -1,0 +1,77 @@
+/*
+ * Animaciones de interfaz.
+ * Todo está dentro de "no-preference": quien tiene activado "reducir movimiento"
+ * en su sistema ve la página quieta y completa.
+ */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* 1. Entrada de la portada: los textos suben uno tras otro */
+  .hero__text > * {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+
+  .hero__text > :nth-child(1) { animation-delay: 0.05s; }
+  .hero__text > :nth-child(2) { animation-delay: 0.18s; }
+  .hero__text > :nth-child(3) { animation-delay: 0.34s; }
+  .hero__text > :nth-child(4) { animation-delay: 0.5s; }
+
+  @keyframes rise {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* 2. La balanza se dibuja y después se mece despacio */
+  .balance .draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: var(--t, 0s);
+  }
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .balance__beam {
+    animation: sway 12s ease-in-out 3.2s infinite;
+  }
+
+  @keyframes sway {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(1.8deg); }
+    75%  { transform: rotate(-1.8deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  /* 3. Líneas curvas del fondo de la portada: deriva lenta */
+  .hero-lines path {
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+
+  .hero-lines path:nth-child(2) { animation-duration: 28s; animation-direction: alternate-reverse; }
+  .hero-lines path:nth-child(3) { animation-duration: 34s; }
+
+  @keyframes drift {
+    from { transform: translateX(-36px); }
+    to   { transform: translateX(36px); }
+  }
+
+  /* 4. Aparición al hacer scroll (la clase "js" la agrega el script del head) */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--d, 0s);
+  }
+
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}

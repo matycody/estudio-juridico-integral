@@ -7,9 +7,10 @@ Sitio web estático de una sola página. HTML, CSS y JS puros, sin build.
 ```
 index.html          Toda la página
 css/base.css        Variables, reset y tipografía
-css/layout.css      Secciones, grillas y responsive
-css/components.css  Botón de WhatsApp, áreas, pasos y balanza
-js/main.js          Número de WhatsApp y mensajes de cada área
+css/layout.css      Encabezado, secciones, grillas y responsive
+css/components.css  Navegación, botones, paneles de áreas, pasos y balanza
+css/motion.css      Animaciones (respetan "reducir movimiento" del sistema)
+js/main.js          Número de WhatsApp, menú del celular y aparición al scrollear
 assets/             Favicon e imágenes
 ```
 
@@ -38,3 +39,7 @@ Netlify o Vercel: importar este repositorio. No hay comando de build; el directo
 - **Fuentes locales (opcional):** hoy se cargan desde Google Fonts. Para alojarlas en el repo, bajar Bodoni Moda y Manrope en formato `woff2` (por ejemplo con google-webfonts-helper), ponerlas en `assets/fonts/` y declararlas con `@font-face` en `css/base.css`.
 - **`sitemap.xml`:** crear cuando se defina el dominio.
 - **Revisión de calidad:** en Chrome, `F12` > pestaña Lighthouse > Analizar la página.
+
+## Pendiente de contenido
+
+- **Quiénes somos:** la sección tiene un texto provisional entre corchetes en `index.html`. Completar con presentación, años de trayectoria, matrícula y foto.

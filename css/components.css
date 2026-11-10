@@ -1,4 +1,91 @@
-/* Componentes: botón de WhatsApp, teléfono, filas de áreas, pasos y balanza */
+/* Componentes: navegación, botones, paneles de áreas, pasos y balanza */
+
+/* Links de la navegación */
+.nav__link {
+  position: relative;
+  padding: 8px 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  height: 1px;
+  background: var(--brass);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nav__link:hover::after,
+.nav__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Botón hamburguesa (solo pantallas chicas) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid rgba(242, 244, 249, 0.28);
+  border-radius: 4px;
+  color: var(--paper);
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 960px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav__link {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(242, 244, 249, 0.12);
+    font-size: 14px;
+  }
+
+  .nav__link::after {
+    display: none;
+  }
+
+  .nav .btn-wa {
+    margin-top: 20px;
+    justify-content: center;
+  }
+}
 
 /* Botón de WhatsApp */
 .btn-wa {
@@ -24,6 +111,12 @@
   flex: none;
 }
 
+.btn-wa--sm {
+  min-height: 44px;
+  padding: 0 18px;
+  font-size: 14px;
+}
+
 .btn-wa--lg {
   gap: 12px;
   min-height: 58px;
@@ -36,6 +129,25 @@
   min-height: 64px;
   padding: 0 36px;
   font-size: 19px;
+}
+
+/* Botón de contorno */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  min-height: 58px;
+  padding: 0 28px;
+  border: 1.5px solid rgba(242, 244, 249, 0.5);
+  border-radius: 4px;
+  color: var(--paper);
+  font-size: 17px;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(242, 244, 249, 0.08);
+  border-color: var(--brass);
 }
 
 /* Barra fija de WhatsApp: solo en pantallas chicas */
@@ -81,32 +193,113 @@
   font-size: 24px;
 }
 
-/* Filas de áreas */
-.area-link {
+/* Paneles de áreas */
+.panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 36px;
+  overflow: hidden;
+  color: var(--paper);
+  transition: flex-grow 0.55s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.4s ease;
+}
+
+.panel--1 {
+  background: #0f1f4d;
+}
+
+.panel--2 {
+  background: #14296a;
+}
+
+.panel--3 {
+  background: #1a3380;
+}
+
+.panel__icon {
+  flex: none;
+  color: var(--brass);
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.panel__title {
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.1;
+}
+
+.panel__list {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.panel-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   min-height: 56px;
-  border-bottom: 1px solid var(--line-light);
-  color: var(--ink);
+  border-top: 1px solid rgba(242, 244, 249, 0.18);
   font-size: 18px;
   font-weight: 500;
-  transition: background 0.18s ease, padding 0.18s ease;
+  color: var(--paper);
+  transition: color 0.2s ease, padding 0.25s ease;
 }
 
-.area-link:hover {
-  background: var(--hover-light);
-  padding-inline: 12px;
-}
-
-.area-link svg {
+.panel-link svg {
   flex: none;
-  transition: transform 0.18s ease;
+  color: var(--brass);
+  transition: transform 0.25s ease;
 }
 
-.area-link:hover svg {
+.panel-link:hover {
+  color: var(--brass);
+  padding-left: 8px;
+}
+
+.panel-link:hover svg {
   transform: translateX(4px);
+}
+
+/* Solo con mouse y pantalla ancha: el panel bajo el cursor se agranda */
+@media (hover: hover) and (min-width: 961px) {
+  .panels:hover .panel {
+    flex-grow: 0.9;
+  }
+
+  .panels .panel:hover {
+    flex-grow: 1.5;
+  }
+
+  .panel:hover .panel__icon {
+    transform: translateY(-6px) scale(1.1);
+  }
+
+  .panels .panel--1:hover {
+    background: #162a63;
+  }
+
+  .panels .panel--2:hover {
+    background: #1b3584;
+  }
+
+  .panels .panel--3:hover {
+    background: #2142a0;
+  }
+}
+
+@media (max-width: 960px) {
+  /* Apilados: cada panel toma la altura de su contenido */
+  .panel {
+    flex: none;
+    padding: 32px 24px;
+  }
 }
 
 /* Pasos */
@@ -148,26 +341,17 @@
 
 .balance__beam {
   transform-origin: 200px 108px;
-  animation: sway 9s ease-in-out infinite alternate;
-}
-
-@keyframes sway {
-  from {
-    transform: rotate(-1.8deg);
-  }
-  to {
-    transform: rotate(1.8deg);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .balance__beam {
-    animation: none;
-  }
-
   .btn-wa,
-  .area-link,
-  .area-link svg {
+  .btn-outline,
+  .panel,
+  .panel__icon,
+  .panel-link,
+  .panel-link svg,
+  .nav__link::after,
+  .nav {
     transition: none;
   }
 }
